@@ -1,4 +1,4 @@
-if exists('g:loaded_ack')
+if exists('g:loaded_ack') || &cp
   finish
 endif
 
@@ -63,6 +63,10 @@ endif
 
 if !exists("g:ack_autofold_results")
   let g:ack_autofold_results = 0
+endif
+
+if !exists("g:ack_use_cword_for_empty_search")
+  let g:ack_use_cword_for_empty_search = 1
 endif
 
 command! -bang -nargs=* -complete=file Ack           call ack#Ack('grep<bang>', <q-args>)
