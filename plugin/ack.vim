@@ -3,12 +3,14 @@ if exists('g:loaded_ack')
 endif
 
 if !exists("g:ack_default_options")
-  let g:ack_default_options = " -s -H --nocolor --nogroup --column"
+  let g:ack_default_options = " -s --nocolor --nogroup --column"
 endif
 
 " Location of the ack utility
 if !exists("g:ackprg")
-  if executable('ack')
+  if executable('ag')
+    let g:ackprg = "ag"
+  elseif executable('ack')
     let g:ackprg = "ack"
   elseif executable('ack-grep')
     let g:ackprg = "ack-grep"
@@ -44,15 +46,15 @@ else
 endif
 
 if !exists("g:ack_qhandler")
-  let g:ack_qhandler = "botright copen"
+  let g:ack_qhandler = "botright copen 6"
 endif
 
 if !exists("g:ack_lhandler")
-  let g:ack_lhandler = "botright lopen"
+  let g:ack_lhandler = "botright lopen 6"
 endif
 
 if !exists("g:ackhighlight")
-  let g:ackhighlight = 0
+  let g:ackhighlight = 1
 endif
 
 if !exists("g:ack_autoclose")
